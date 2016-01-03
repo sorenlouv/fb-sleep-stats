@@ -2,10 +2,5 @@
 	"fbCookie": {
 		"c_user": "",
 		"xs": ""
-	},
-    "fbSdk": {
-        "client_id": "",
-        "redirect_uri": "",
-        "client_secret": ""
-    }
+	}
 }

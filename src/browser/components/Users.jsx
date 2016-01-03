@@ -22,7 +22,7 @@ module.exports = React.createClass({
     render() {
         var users = this.state.users;
         var query = this.state.query;
-        if(query.length > 2) {
+        if(query) {
             users = users.filter(function (user) {
                 return user.name.toLowerCase().indexOf(query) > -1;
             });
