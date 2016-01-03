@@ -1,5 +1,5 @@
 {
-  "name": "fb-sleep",
+  "name": "fb-sleep-stats",
   "version": "0.5.0",
   "description": "Track when people are awake through Facebook",
   "main": "index.js",
@@ -8,7 +8,7 @@
     "debug": "node-debug --no-preload ./index.js",
     "scrape": "node ./scrape.js",
     "watch": "webpack --watch --progress",
-    "build-minified": "webpack --optimize-minimize",
+    "build-minified": "webpack --progress --optimize-minimize",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -17,6 +17,7 @@
     "config": "^1.17.1",
     "cookie-parser": "^1.4.0",
     "express": "^4.13.3",
+    "fb-sleep": "^1.0.1",
     "lodash": "^3.10.1",
     "q": "^1.4.1",
     "react": "^0.14.5",
@@ -35,7 +36,6 @@
     "eslint-plugin-react": "^3.13.1",
     "less": "^2.5.3",
     "less-loader": "^2.2.2",
-    "node-inspector": "^0.12.5",
     "style-loader": "^0.13.0",
     "webpack": "^1.12.9"
   }

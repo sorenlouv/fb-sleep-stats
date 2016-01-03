@@ -2,7 +2,6 @@ html, body {
     height:100vh;
     overflow: hidden;
     font-family: 'Helvetica Neue', 'Segoe UI', Helvetica, Arial, sans-serif;
-
 }
 
 .user-list {
@@ -13,10 +12,11 @@ html, body {
     border-right: 1px solid #aaa;
 
     .search {
-        width: 100%;
+        width: calc(~"100% - 10px");
         display: inline-block;
         background-color: #f9f9f9;
         border: none;
+        outline: none;
         border-radius: 5px;
         padding: 10px;
         font-size: 1em;
