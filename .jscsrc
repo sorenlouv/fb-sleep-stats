@@ -1,0 +1,8 @@
+{
+    "preset": "node-style-guide",
+    "maximumLineLength": 100,
+    "requireCapitalizedComments": false,
+    "validateIndentation": 4,
+    "requireCamelCaseOrUpperCaseIdentifiers": false,
+    "requireTrailingComma": false
+}

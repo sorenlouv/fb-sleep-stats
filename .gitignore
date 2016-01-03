@@ -1,0 +1,7 @@
+node_modules
+
+config/*
+!config/default.json
+
+public/bundle.js
+npm-debug.log
