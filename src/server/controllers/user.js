@@ -1,4 +1,3 @@
-var _ = require('lodash');
 var userService = require('../services/user');
 
 var userController = {};

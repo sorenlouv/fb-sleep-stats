@@ -1,13 +1,54 @@
 html, body {
     height:100vh;
     overflow: hidden;
+    font-family: 'Helvetica Neue', 'Segoe UI', Helvetica, Arial, sans-serif;
+
 }
 
 .user-list {
     float: left;
-    width: 300px;
+    width: 299px;
     height: 100vh;
     overflow: scroll;
+    border-right: 1px solid #aaa;
+
+    .search {
+        width: 100%;
+        display: inline-block;
+        background-color: #f9f9f9;
+        border: none;
+        border-radius: 5px;
+        padding: 10px;
+        font-size: 1em;
+        margin-bottom: 10px;
+    }
+
+    .user {
+        display: block;
+        border-bottom: 1px solid #e5e5e5;
+
+        &.selected {
+            background-color: #f9f9f9;
+        }
+
+        img {
+            display: inline-block;
+            width: 50px;
+            vertical-align: middle;
+            border-radius: 25px;
+            margin: 10px 10px 10px 0;
+            height: 50px;
+        }
+
+        .name {
+            display: inline-block;
+            color: #000;
+            width: calc(~"100% - 60px");
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+    }
 }
 
 .content {

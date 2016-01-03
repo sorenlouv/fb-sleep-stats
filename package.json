@@ -7,7 +7,8 @@
     "start": "node ./index.js",
     "debug": "node-debug --no-preload ./index.js",
     "scrape": "node ./scrape.js",
-    "build": "webpack",
+    "watch": "webpack --watch --progress",
+    "build-minified": "webpack --optimize-minimize",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -31,6 +32,7 @@
     "babel-preset-es2015": "^6.3.13",
     "babel-preset-react": "^6.3.13",
     "css-loader": "^0.23.1",
+    "eslint-plugin-react": "^3.13.1",
     "less": "^2.5.3",
     "less-loader": "^2.2.2",
     "node-inspector": "^0.12.5",

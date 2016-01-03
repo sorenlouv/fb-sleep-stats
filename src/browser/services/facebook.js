@@ -13,7 +13,12 @@ var fbPromise = Q.Promise(function(resolve) {
         window.FB.Event.subscribe('auth.statusChange', function(response) {
             var isAuthenticated = response.status === 'connected';
             if (isAuthenticated) {
-                document.cookie = 'fbAccessToken=' + response.authResponse.accessToken;
+                var expires = new Date(Date.now() + response.authResponse.expiresIn).toUTCString();
+                var cookie = [];
+                cookie.push('fbAccessToken=' + response.authResponse.accessToken);
+                cookie.push('expires=' + expires);
+                cookie.push('path=/');
+                document.cookie = cookie.join(';');
             }
         });
 

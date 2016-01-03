@@ -2,14 +2,16 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 
-// Router
+// React Router
 var Router = require('react-router').Router;
 var Route = require('react-router').Route;
-var Link = require('react-router').Link;
 var browserHistory = require('react-router').browserHistory;
 
+// Components
 var Users = require('./Users.jsx');
 var User = require('./User.jsx');
+
+// Services
 var facebookService = require('../services/facebook');
 
 // Styles

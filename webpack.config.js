@@ -22,10 +22,6 @@ module.exports = {
             query: {
                 presets: ['react', 'es2015']
             }
-            // Images
-        }, {
-            test: /\.(png|jpg|gif)$/,
-            loader: 'url-loader?limit=8192'
         }]
-    },
+    }
 };

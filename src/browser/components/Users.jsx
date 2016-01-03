@@ -1,8 +1,5 @@
 var React = require('react');
-var ReactDOM = require('react-dom');
 var Link = require('react-router').Link;
-var _ = require('lodash');
-var Q = require('q');
 
 var userService = require('../services/user');
 
@@ -10,6 +7,7 @@ module.exports = React.createClass({
     getInitialState() {
         return {
             users: [],
+            query: ''
         };
     },
     componentDidMount: function() {
@@ -24,19 +22,26 @@ module.exports = React.createClass({
     render() {
         var users = this.state.users;
         var query = this.state.query;
-        if(query) {
+        if(query.length > 2) {
             users = users.filter(function (user) {
                 return user.name.toLowerCase().indexOf(query) > -1;
             });
         }
 
+        users = users.slice(0, 20);
+
         var userNodes = users.map(function (user) {
-            return <p key={user.id}><img src={'http://graph.facebook.com/' + user.id + '/picture?type=square'}/><Link to={`/user/${user.id}`}>{user.name}</Link></p>
+            return (
+                <Link key={user.id} className="user" activeClassName="selected" to={`/user/${user.id}`}>
+                    <img src={'http://graph.facebook.com/' + user.id + '/picture?type=square'}/>
+                    <div className="name">{user.name}</div>
+                </Link>
+            );
         });
 
         return (
             <div>
-                <input type="search" placeholder="Search" onChange={this.handleInputChange} value={this.state.query}/>
+                <input className="search" type="search" placeholder="Search" onChange={this.handleInputChange} value={this.state.query}/>
                 {userNodes}
             </div>
         );

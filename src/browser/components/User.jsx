@@ -1,5 +1,4 @@
 var React = require('react');
-var ReactDOM = require('react-dom');
 var ReactHighcharts = require('react-highcharts/bundle/highcharts');
 var userService = require('../services/user');
 
