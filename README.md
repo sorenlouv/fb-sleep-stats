@@ -14,6 +14,11 @@ Copy config, and update `config/development.json`:
 cp config/default.json config/development.json
 ```
 
+Install dependencies
+```
+npm install
+```
+
 Build assets
 ```
 npm run build-minified
