@@ -1,8 +1,52 @@
+var _ = require('lodash');
 var React = require('react');
-var ReactHighcharts = require('react-highcharts/bundle/highcharts');
+var Highcharts = require('react-highcharts/bundle/highcharts');
+// var Highstock = require('react-highcharts/bundle/highstock');
 var userService = require('../services/user');
 
+function getLabels(data) {
+    var activeTimestamps = data.filter(function(d) {
+        return _.last(d) === 1;
+    }).map(_.first);
+
+    var sleepIntervals = activeTimestamps.reduce(function(memo, timestamp, i) {
+        var isLast = i === (data.length - 1);
+        if (isLast) {
+            return memo;
+        }
+
+        var nextIndex = i + 1;
+        var nextTimestamp = activeTimestamps[nextIndex];
+        var hours = (nextTimestamp - timestamp) / 1000 / 60 / 60;
+
+        if(hours > 2) {
+            memo.push({
+                from: timestamp,
+                to: nextTimestamp,
+                hours: hours
+            });
+        }
+
+        return memo;
+    }, []);
+
+    return sleepIntervals.map(function (sleep) {
+        return {
+          color: '#dfe3ee',
+          from: sleep.from,
+          to: sleep.to,
+          label: {
+            text: sleep.hours.toFixed(1) + ' <br> hours <br> of sleep',
+            fontWeight: 'bold',
+            verticalAlign: 'middle',
+            y: 0
+          }
+        }
+    });
+}
+
 function getConfig(data) {
+    var labels = getLabels(data);
     return {
         plotOptions: {
             series: {
@@ -13,7 +57,7 @@ function getConfig(data) {
             enabled: false,
         },
         chart: {
-            height: 200,
+            height: 300,
             renderTo: 'container',
             type: 'column',
         },
@@ -26,6 +70,7 @@ function getConfig(data) {
                 month: '%e. %b',
                 year: '%b',
             },
+            plotBands: labels
         },
         yAxis: {
             max: 1,
@@ -44,9 +89,10 @@ function getConfig(data) {
             },
         },
         series: [{
+            color: '#3b5998',
             name: '-',
             data: data,
-        }, ],
+        }],
     };
 }
 
@@ -71,10 +117,6 @@ module.exports = React.createClass({
         this.getUser(this.props.params.userId);
     },
     render() {
-        return (
-            <div>
-                <ReactHighcharts config = {getConfig(this.state.userActivity)}></ReactHighcharts>
-            </div>
-        );
+        return <Highcharts config = {getConfig(this.state.userActivity)}></Highcharts>
     }
 });
