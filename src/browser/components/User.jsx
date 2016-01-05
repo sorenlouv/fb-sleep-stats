@@ -4,45 +4,83 @@ var Highcharts = require('react-highcharts/bundle/highcharts');
 // var Highstock = require('react-highcharts/bundle/highstock');
 var userService = require('../services/user');
 
-function getLabels(data) {
-    var activeTimestamps = data.filter(function(d) {
-        return _.last(d) === 1;
-    }).map(_.first);
-
-    var sleepIntervals = activeTimestamps.reduce(function(memo, timestamp, i) {
-        var isLast = i === (data.length - 1);
+function getLabels(items) {
+    return items.filter(function getActiveItems(item) {
+        return _.last(item) === 1;
+    })
+    .map(_.first)
+    .reduce(function(memo, timestamp, i, timestamps) {
+        var isLast = i === (timestamps.length - 1);
         if (isLast) {
             return memo;
         }
 
-        var nextIndex = i + 1;
-        var nextTimestamp = activeTimestamps[nextIndex];
-        var hours = (nextTimestamp - timestamp) / 1000 / 60 / 60;
+        var nextTimestamp = timestamps[i + 1];
+        var durationHours = (nextTimestamp - timestamp) / 1000 / 60 / 60;
+        var hour = new Date(timestamp).getHours();
 
-        if(hours > 2) {
+        if(durationHours > 2 && durationHours < 14 && (hour > 21 || hour < 6)) {
             memo.push({
                 from: timestamp,
-                to: nextTimestamp,
-                hours: hours
+                to: nextTimestamp
             });
         }
 
         return memo;
-    }, []);
+    }, [])
+    .map(function (interval, i, intervals) {
+        var MIN_DAY_LENGTH = 12 * 3600 * 1000;
+        var isLast = i === (intervals.length - 1);
+        if (isLast || interval.delete) {
+            return interval;
+        }
 
-    return sleepIntervals.map(function (sleep) {
+        var nextInterval = intervals[i + 1];
+        var awakeDuration = nextInterval.from - interval.to;
+        if(awakeDuration < MIN_DAY_LENGTH) {
+            var nextIntervalDuration = (nextInterval.to - nextInterval.from);
+            var intervalDuration = (interval.to - interval.from);
+            if(awakeDuration < 15 * 60 * 1000 && (nextIntervalDuration + intervalDuration) < 14 * 3600 * 1000) {
+                interval.delete = true;
+                nextInterval.from = interval.from;
+            }else {
+                var nextIsLarger = nextIntervalDuration > intervalDuration;
+                if(nextIsLarger) {
+                    interval.delete = true;
+                } else {
+                    nextInterval.delete = true;
+                }
+            }
+        }
+
+        return interval;
+    }, [])
+    .filter(function (interval) {
+        return !interval.delete;
+    })
+    .map(function (sleep) {
+        var yesterday = getYesterday(sleep.to);
+        var duration = (sleep.to - sleep.from) / 1000 / 60 / 60;
         return {
           color: '#dfe3ee',
           from: sleep.from,
           to: sleep.to,
           label: {
-            text: sleep.hours.toFixed(1) + ' <br> hours <br> of sleep',
+            text: '<strong>' + yesterday + '</strong><br>' + duration.toFixed(1) + ' hrs.<br> of sleep',
             fontWeight: 'bold',
             verticalAlign: 'middle',
             y: 0
           }
         }
     });
+}
+
+function getYesterday(timestamp) {
+    var days = ['Sun','Mon','Tue','Wed','Thur','Fri','Sat'];
+    var d = new Date(timestamp);
+    d.setDate(d.getDate() - 1)
+    var day = d.getDay();
+    return days[day];
 }
 
 function getConfig(data) {
@@ -93,6 +131,15 @@ function getConfig(data) {
             name: '-',
             data: data,
         }],
+        // scrollbar: {
+        //     enabled: true
+        // },
+        // rangeSelector: {
+        //     enabled: false
+        // },
+        // navigator: {
+        //     enabled: false
+        // }
     };
 }
 
