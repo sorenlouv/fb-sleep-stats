@@ -1,8 +1,9 @@
+var config = require('config');
+var PORT = config.get('server.port');
 var express = require('express');
 var cookieParser = require('cookie-parser');
 var path = require('path');
 var app = express();
-var PORT = 9090;
 
 // Cookies
 app.use(cookieParser());
