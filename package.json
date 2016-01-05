@@ -11,6 +11,10 @@
     "build-minified": "webpack --progress --optimize-minimize",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sqren/fb-sleep-stats.git"
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {
