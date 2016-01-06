@@ -1,7 +1,6 @@
 var _ = require('lodash');
 var React = require('react');
 var Highcharts = require('react-highcharts/bundle/highcharts');
-// var Highstock = require('react-highcharts/bundle/highstock');
 var userService = require('../services/user');
 
 function getLabels(timestamps) {
@@ -142,16 +141,7 @@ function getConfig(timestamps) {
             color: '#3b5998',
             name: '-',
             data: data,
-        }],
-        // scrollbar: {
-        //     enabled: true
-        // },
-        // rangeSelector: {
-        //     enabled: false
-        // },
-        // navigator: {
-        //     enabled: false
-        // }
+        }]
     };
 }
 
