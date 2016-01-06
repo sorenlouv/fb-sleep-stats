@@ -4,12 +4,9 @@ var Highcharts = require('react-highcharts/bundle/highcharts');
 // var Highstock = require('react-highcharts/bundle/highstock');
 var userService = require('../services/user');
 
-function getLabels(items) {
-    return items.filter(function getActiveItems(item) {
-        return _.last(item) === 1;
-    })
-    .map(_.first)
-    .reduce(function(memo, timestamp, i, timestamps) {
+function getLabels(timestamps) {
+    return _(timestamps)
+    .reduce(function(memo, timestamp, i) {
         var isLast = i === (timestamps.length - 1);
         if (isLast) {
             return memo;
@@ -83,8 +80,17 @@ function getYesterday(timestamp) {
     return days[day];
 }
 
-function getConfig(data) {
-    var labels = getLabels(data);
+function getConfig(timestamps) {
+    if(_.isEmpty(timestamps)) {
+        return {};
+    }
+
+    var labels = getLabels(timestamps);
+    var labels = [];
+    var data = timestamps.map(function(timestamp){
+        return [timestamp, 1];
+    });
+
     return {
         plotOptions: {
             series: {
@@ -123,7 +129,13 @@ function getConfig(data) {
         },
         tooltip: {
             formatter: function() {
-                return new Date(this.x).toLocaleTimeString();
+                function pad(n) { return ('0' + n).slice(-2); }
+                var days = ['Sun','Mon','Tue','Wed','Thur','Fri','Sat'];
+                var d = new Date(this.x);
+                var weekDay = days[d.getDay()];
+                var hours = pad(d.getHours());
+                var minutes = pad(d.getMinutes());
+                return weekDay + ' ' + hours + ':' + minutes;
             },
         },
         series: [{
