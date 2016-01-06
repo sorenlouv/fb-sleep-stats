@@ -85,7 +85,6 @@ function getConfig(timestamps) {
     }
 
     var labels = getLabels(timestamps);
-    var labels = [];
     var data = timestamps.map(function(timestamp){
         return [timestamp, 1];
     });
