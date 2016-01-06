@@ -13,7 +13,9 @@ var fbPromise = Q.Promise(function(resolve) {
         window.FB.Event.subscribe('auth.statusChange', function(response) {
             var isAuthenticated = response.status === 'connected';
             if (isAuthenticated) {
-                var expires = new Date(Date.now() + response.authResponse.expiresIn).toUTCString();
+                var expires = new Date(Date.now() + response.authResponse.expiresIn * 1000).toUTCString();
+                console.log('expires', expires);
+                console.log('expiresin', response.authResponse.expiresIn);
                 var cookie = [];
                 cookie.push('fbAccessToken=' + response.authResponse.accessToken);
                 cookie.push('expires=' + expires);
