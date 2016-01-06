@@ -8,7 +8,7 @@
     "scrape": "node ./scrape.js",
 
     "forever-scrape": "forever -a start -l scrape.log scrape.js",
-    "forever-server": "forever -a start -l scrape.log index.js",
+    "forever-server": "forever -a start -l server.log index.js",
 
     "debug": "node-debug --no-preload ./index.js",
     "watch": "webpack --watch --progress",
