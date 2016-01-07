@@ -3,6 +3,9 @@ var lowdb = require('lowdb');
 var storage = require('lowdb/file-async');
 var dao = {};
 var db = getDb();
+var REFRESH_RATE = 1000 * 60 * 10;
+
+refreshDb();
 
 function getDb() {
     return lowdb(path.resolve(__dirname, 'db.json'), {
@@ -10,8 +13,13 @@ function getDb() {
     });
 }
 
+function refreshDb() {
+    setInterval(function() {
+        db = getDb();
+    }, REFRESH_RATE);
+}
+
 dao.getUsers = function() {
-    var db = getDb();
     return db('users').cloneDeep();
 };
 
