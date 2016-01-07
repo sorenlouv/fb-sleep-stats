@@ -10,7 +10,7 @@ var fbPromise = Q.Promise(function(resolve) {
             version: 'v2.2'
         });
 
-        FB.getLoginStatus();
+        window.FB.getLoginStatus();
 
         window.FB.Event.subscribe('auth.statusChange', function(response) {
             var isAuthenticated = response.status === 'connected';

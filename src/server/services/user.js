@@ -1,23 +1,21 @@
-var userService = {};
 var _ = require('lodash');
-var fbSleep = require('fb-sleep');
+var dao = require('./dao');
 var facebookService = require('./facebook');
+var userService = {};
+var usersPromise = _.memoize(dao.getUsers);
 
-userService.getUsers = _.memoize(fbSleep.getUsers);
+userService.saveUsers = function(users) {
+    dao.saveUsers(users);
+};
 
 userService.getUser = function(userId) {
-    return userService.getUsers().then(function(users) {
-        if (!users[userId]) {
-            return [];
-        }
-        return users[userId].sort(function(a, b) {
-            return a - b;
-        });
+    return usersPromise().then(function(users) {
+        return _.sortBy(users[userId]);
     });
 };
 
 userService.getList = function(accessToken) {
-    return userService.getUsers()
+    return usersPromise()
         .then(function(users) {
             var userIds = Object.keys(users);
             return facebookService.getUsers(accessToken, userIds)

@@ -6,3 +6,4 @@ config/*
 
 public/bundle.js
 npm-debug.log
+src/server/services/db.json

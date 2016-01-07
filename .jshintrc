@@ -1,0 +1,25 @@
+{
+    "maxerr"        : 50,
+    "bitwise"       : false,
+    "camelcase"     : false,
+    "curly"         : true,
+    "eqeqeq"        : true,
+    "forin"         : true,
+    "freeze"        : true,
+    "immed"         : true,
+    "latedef"       : false,
+    "newcap"        : false,
+    "noarg"         : true,
+    "noempty"       : true,
+    "nonew"         : true,
+    "quotmark"      : "single",
+    "undef"         : true,
+    "unused"        : "vars",
+    "trailing"      : true,
+    "browser"       : true,
+    "devel"         : true,
+    "node"          : true,
+
+    "globals"       : {
+    }
+}

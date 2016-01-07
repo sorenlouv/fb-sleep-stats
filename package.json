@@ -6,10 +6,8 @@
   "scripts": {
     "start": "node ./index.js",
     "scrape": "node ./scrape.js",
-
     "forever-scrape": "forever -a start -l scrape.log scrape.js",
     "forever-server": "forever -a start -l server.log index.js",
-
     "debug": "node-debug --no-preload ./index.js",
     "watch": "webpack --watch --progress",
     "build-minified": "webpack --progress --optimize-minimize",
@@ -27,6 +25,7 @@
     "express": "^4.13.3",
     "fb-sleep": "^1.2.0",
     "lodash": "^3.10.1",
+    "lowdb": "^0.11.2",
     "q": "^1.4.1",
     "react": "^0.14.5",
     "react-dom": "^0.14.5",
