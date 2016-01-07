@@ -19,13 +19,8 @@ userController.listUsers = function(req, res) {
 
 userController.viewUser = function(req, res) {
     var userId = req.params.userId;
-    userService.getUser(userId).then(function(user) {
-        res.json(user);
-    })
-    .catch(function(err) {
-        console.error(err);
-        res.sendStatus(500);
-    });
+    var user = userService.getUser(userId);
+    res.json(user);
 };
 
 module.exports = userController;
