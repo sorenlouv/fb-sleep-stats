@@ -9,13 +9,13 @@ userService.saveUsers = function(users) {
 };
 
 userService.getUser = function(userId) {
-    return usersPromise().then(function(users) {
+    return usersPromise.then(function(users) {
         return _.sortBy(users[userId]);
     });
 };
 
 userService.getList = function(accessToken) {
-    return usersPromise()
+    return usersPromise
         .then(function(users) {
             var userIds = Object.keys(users);
             return facebookService.getUsers(accessToken, userIds)
