@@ -2,7 +2,6 @@ node_modules
 
 config/*
 !config/default.json
-!config/production.js
 
 public/bundle.js
 npm-debug.log
