@@ -8,7 +8,6 @@ var POLLING_INTERVAL = 1000 * 60 * 10;
 function getAndSaveUsers(config, timeSinceLastCheck) {
     fbSleep.getRecentlyActiveUsers(config, timeSinceLastCheck)
         .then(function(users) {
-            console.log(users);
             console.log(new Date().toLocaleString(), ' - ', users.length, 'active users');
             return userService.saveUsers(users);
         })
