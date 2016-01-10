@@ -2,5 +2,8 @@
 	"fbCookie": {
 		"c_user": "",
 		"xs": ""
-	}
+	},
+    "server": {
+        "port": 3000
+    }
 }
