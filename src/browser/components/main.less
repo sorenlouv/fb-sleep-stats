@@ -1,6 +1,6 @@
 html, body {
-    height:100vh;
-    overflow: hidden;
+    // height:100vh;
+    // overflow: hidden;
     font-family: 'Helvetica Neue', 'Segoe UI', Helvetica, Arial, sans-serif;
 }
 
@@ -54,4 +54,19 @@ html, body {
 .content {
     width: calc(~"100% - 300px");
     float: right;
+
+    .interval-overview {
+        thead {
+            td {
+                font-weight: bold;
+            }
+        }
+        tbody
+            tr:nth-child(odd) {
+                background-color: #ccc;
+            }
+            td {
+                padding: 10px 5px;
+            }
+    }
 }
