@@ -4,7 +4,7 @@ var Link = require('react-router').Link;
 var userService = require('../services/user');
 
 module.exports = React.createClass({
-    getInitialState() {
+    getInitialState: function() {
         return {
             users: [],
             query: ''
@@ -19,7 +19,7 @@ module.exports = React.createClass({
     handleInputChange: function(event) {
         this.setState({ query: event.target.value });
     },
-    render() {
+    render: function() {
         var users = this.state.users;
         var query = this.state.query;
         if(query) {
@@ -32,8 +32,8 @@ module.exports = React.createClass({
 
         var userNodes = users.map(function (user) {
             return (
-                <Link key={user.id} className="user" activeClassName="selected" to={`/user/${user.id}`}>
-                    <img src={'http://graph.facebook.com/' + user.id + '/picture?type=square'}/>
+                <Link key={user.id} className="user" activeClassName="selected" to={'/user/' + user.id}>
+                    <img src={'http://graph.facebook.com/' + user.id + '/picture?type=square'} />
                     <div className="name">{user.name}</div>
                 </Link>
             );
@@ -41,8 +41,8 @@ module.exports = React.createClass({
 
         return (
             <div>
-                <input className="search" type="search" placeholder="Search" onChange={this.handleInputChange} value={this.state.query}/>
-                {userNodes}
+                <input className="search" type="text" placeholder="Search" onChange={this.handleInputChange} value={this.state.query}/>
+                <div>{userNodes}</div>
             </div>
         );
     }
