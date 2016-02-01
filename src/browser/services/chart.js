@@ -43,7 +43,10 @@ chartService.getSleepIntervals = function(timestamps) {
         return [];
     }
 
-    return _.chain(timestamps).reduce(function(memo, timestamp, i) {
+    return _.chain(timestamps)
+
+        // Create all possible intervals
+        .reduce(function(memo, timestamp, i) {
             var timestampStart = timestamp;
             var timestampEnd = timestamps[i + 1];
             if (!timestampEnd) {
@@ -57,6 +60,8 @@ chartService.getSleepIntervals = function(timestamps) {
 
             return memo;
         }, [])
+
+        // Combine Intervals
         .reduce(function(memo, interval, i, intervals) {
             var nextInterval = intervals[i + 1];
             if (!nextInterval) {
@@ -75,12 +80,16 @@ chartService.getSleepIntervals = function(timestamps) {
             memo.push(interval);
             return memo;
         }, [])
+
+        // Calculate sleep score
         .map(function(interval, i, intervals) {
             interval.score = getSleepScore(interval.from, interval.to);
             interval.duration = toHours(interval.to - interval.from);
             return interval;
         })
         .sortByOrder('score', 'asc')
+
+        // Only have a single interval per day
         .reduce(function(memo, interval, i) {
             var d = new Date(interval.to);
             var key = new Date(d.getFullYear(), d.getMonth(), d.getDate() - 1).getTime();
