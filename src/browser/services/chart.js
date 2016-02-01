@@ -43,7 +43,7 @@ chartService.getSleepIntervals = function(timestamps) {
         return [];
     }
 
-    var a = _.chain(timestamps).reduce(function(memo, timestamp, i) {
+    return _.chain(timestamps).reduce(function(memo, timestamp, i) {
             var timestampStart = timestamp;
             var timestampEnd = timestamps[i + 1];
             if (!timestampEnd) {
@@ -97,8 +97,6 @@ chartService.getSleepIntervals = function(timestamps) {
         })
         .sortBy('key')
         .value();
-
-    return a;
 };
 
 function getPlotBands(timestamps) {

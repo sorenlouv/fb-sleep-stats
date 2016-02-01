@@ -3,6 +3,11 @@ var Highcharts = require('react-highcharts/bundle/highcharts');
 var userService = require('../services/user');
 var chartService = require('../services/chart');
 var moment = require('moment');
+Highcharts.Highcharts.setOptions({
+    global: {
+        useUTC: false
+    }
+});
 
 module.exports = React.createClass({
     getUser(userId) {
