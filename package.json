@@ -23,7 +23,7 @@
     "config": "^1.17.1",
     "cookie-parser": "^1.4.0",
     "express": "^4.13.3",
-    "fb-sleep": "^1.3.1",
+    "fb-sleep": "^1.4",
     "lodash": "^3.10.1",
     "lowdb": "^0.11.2",
     "moment": "^2.11.0",
