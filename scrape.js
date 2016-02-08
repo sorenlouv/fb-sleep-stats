@@ -3,10 +3,10 @@ var config = require('config');
 var fbCookie = config.get('fbCookie');
 var fbSleep = require('fb-sleep');
 var userService = require('./src/server/services/user');
+var TEN_MINUTES = 1000 * 60 * 10;
 
 function getRandomDelay() {
-    var POLLING_INTERVAL = 1000 * 60;
-    var delay = _.random(POLLING_INTERVAL * 0.9, POLLING_INTERVAL);
+    var delay = _.random(TEN_MINUTES * 0.9, TEN_MINUTES);
     return delay;
 }
 
@@ -27,4 +27,4 @@ function getAndSaveUsers(config, since) {
         .done();
 }
 
-getAndSaveUsers(fbCookie, Date.now() - 1000 * 60);
+getAndSaveUsers(fbCookie, Date.now() - TEN_MINUTES);
