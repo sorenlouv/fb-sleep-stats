@@ -9,10 +9,14 @@ Clone repository:
 git clone git@github.com:sqren/fb-sleep-stats.git
 ```
 
-Copy config, and update `config/development.json`:
+Copy config, and update `config/development.json`
 ```
 cp config/default.json config/development.json
 ```
+
+Update the following values in `config/development.json`
+ - "c_user": your Facebook user id
+ -  "xs": [xs value from Facebook cookie](https://gist.github.com/sqren/0e4563f258c9e85e4ae1)
 
 Install dependencies
 ```
