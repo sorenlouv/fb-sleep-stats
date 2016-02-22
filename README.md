@@ -73,7 +73,7 @@ npm install
 npm run build-minified
 ```
 
-**No users is showing up**
+**No users show up**
  - If you have an ad-blocker, you must disable it for the site.
  - You need to run `npm run scrape` and keep it running. When you stop it, it will stop tracking.
 
