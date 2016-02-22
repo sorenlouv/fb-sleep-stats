@@ -17,6 +17,7 @@ function getAndSaveUsers(config, since) {
             return userService.saveUsers(users);
         })
         .catch(function(err) {
+            console.error('A error occured while scraping. Please check to make sure your development.json config is correct');
             console.error(new Date().toLocaleString(),
                 ' - Could not get users:', err.message, err.statusCode);
         })
