@@ -24,6 +24,8 @@ Update the following values in `config/development.json`
  -  "xs": [xs value from Facebook cookie](https://gist.github.com/sqren/0e4563f258c9e85e4ae1)
  - "appId": [Facebook App Id](https://gist.github.com/sqren/1ac0f5d316fcbd46d8c1)
 
+*Make sure there are not trailing tabs or spaces in the config file!*
+
 Install dependencies
 ```
 npm install
