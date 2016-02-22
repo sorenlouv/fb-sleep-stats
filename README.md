@@ -5,6 +5,10 @@ By tracking online/offline status of people on Facebook, it is possible to get a
 Read the blog post: https://medium.com/@sqrendk/how-you-can-use-facebook-to-track-your-friends-sleeping-habits-505ace7fffb6
 
 ## Installation
+
+**Requirements**
+ - Node.js (preferably Node 4)
+
 Clone repository:
 ```
 git clone git@github.com:sqren/fb-sleep-stats.git
