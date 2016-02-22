@@ -31,7 +31,7 @@ function toHours(milliseconds) {
 }
 
 function getYesterday(timestamp) {
-    var days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat'];
+    var days = ['Sun/Mon', 'Mon/Tue', 'Tue/Wed', 'Wed/Thur', 'Thur/Fri', 'Fri/Sat', 'Sat/Sun'];
     var d = new Date(timestamp);
     d.setDate(d.getDate() - 1);
     var day = d.getDay();
@@ -87,9 +87,11 @@ chartService.getSleepIntervals = function(timestamps) {
             interval.duration = toHours(interval.to - interval.from);
             return interval;
         })
+
+        // Order intervals by sleep score
         .sortByOrder('score', 'asc')
 
-        // Only have a single interval per day
+        // Reduce intervals to a single per day (Only keep interval with best score)
         .reduce(function(memo, interval, i) {
             var d = new Date(interval.to);
             var key = new Date(d.getFullYear(), d.getMonth(), d.getDate() - 1).getTime();
