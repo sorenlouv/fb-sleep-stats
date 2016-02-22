@@ -15,6 +15,7 @@ git clone git@github.com:sqren/fb-sleep-stats.git
 ```
 
 **Configuration**
+
 Make a copy of the default config file:
 ```
 cp config/default.json config/development.json
