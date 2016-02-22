@@ -9,12 +9,13 @@ Read the blog post: https://medium.com/@sqrendk/how-you-can-use-facebook-to-trac
 **Requirements**
  - Node.js (preferably Node 4)
 
-Clone repository:
+**Clone repository**
 ```
 git clone git@github.com:sqren/fb-sleep-stats.git
 ```
 
-Copy config, and update `config/development.json`
+**Configuration**
+Make a copy of the default config file:
 ```
 cp config/default.json config/development.json
 ```
@@ -26,24 +27,24 @@ Update the following values in `config/development.json`
 
 *Make sure there are not trailing tabs or spaces in the config file!*
 
-Install dependencies
+**Install dependencies**
 ```
 npm install
 ```
 
-Build assets
+**Build assets**
 ```
 npm run build-minified
 ```
 
 ## Starting
 
-Start scraping
+**Start scraping**
 ```
 npm run scrape
 ```
 
-Start server
+**Start server**
 ```
 npm start
 ```
