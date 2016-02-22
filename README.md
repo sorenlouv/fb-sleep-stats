@@ -18,7 +18,7 @@ cp config/default.json config/development.json
 Update the following values in `config/development.json`
  - "c_user": your Facebook user id
  -  "xs": [xs value from Facebook cookie](https://gist.github.com/sqren/0e4563f258c9e85e4ae1)
- - "appId": A facebook app id pointing to your local machine
+ - "appId": [A facebook app id pointing to your local machine](https://gist.github.com/sqren/1ac0f5d316fcbd46d8c1)
 
 Install dependencies
 ```
