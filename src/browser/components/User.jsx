@@ -49,7 +49,7 @@ module.exports = React.createClass({
         return (
             <div>
                 <div style={{width: '100%', overflow: 'scroll'}}>
-                    <div style={{width: (this.state.count * 4) + 'px'}}>
+                    <div style={{'min-width': (this.state.count * 4) + 'px'}}>
                         <Highcharts config={this.state.config} width="20000"></Highcharts>
                     </div>
                 </div>
