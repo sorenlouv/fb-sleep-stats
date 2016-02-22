@@ -7,7 +7,7 @@ var fbPromise = Q.Promise(function(resolve) {
             appId: __FBAPPID__,
             xfbml: true,
             cookie: true,
-            version: 'v2.2'
+            version: 'v2.5'
         });
 
         window.FB.getLoginStatus();
