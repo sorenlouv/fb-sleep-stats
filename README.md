@@ -16,6 +16,11 @@ git clone git@github.com:sqren/fb-sleep-stats.git
 
 **Configuration**
 
+Open the source code folder:
+```
+cd fb-sleep-stats
+```
+
 Make a copy of the default config file:
 ```
 cp config/default.json config/development.json
@@ -41,6 +46,8 @@ npm run build-minified
 ## Starting
 
 **Start scraping**
+
+*This will run continously, polling Facebook every 10 minutes. Keep it running for as long as you want to track sleep.*
 ```
 npm run scrape
 ```
@@ -56,4 +63,13 @@ http://localhost:3000
 ```
 
 #Troubleshooting
+
+**I get an error when running "npm run build-minified"**
+Try re-installing the node-modules:
+```
+rm -rf node_modules
+npm install
+npm run build-minified
+```
+
 If you encounter a bug or have a problem, please go to [Issues](https://github.com/sqren/fb-sleep-stats/issues?utf8=%E2%9C%93&q=is%3Aissue+) and use the search functionality, in case someone else already asked the question. If you can't find anything helpful you are very welcome to create a [new issue](https://github.com/sqren/fb-sleep-stats/issues/new)
