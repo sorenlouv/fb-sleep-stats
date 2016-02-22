@@ -4,7 +4,7 @@ var facebookService = {};
 var fbPromise = Q.Promise(function(resolve) {
     window.fbAsyncInit = function() {
         window.FB.init({
-            appId: '435522656639081',
+            appId: __FBAPPID__,
             xfbml: true,
             cookie: true,
             version: 'v2.2'
