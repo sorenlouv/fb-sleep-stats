@@ -17,7 +17,8 @@ module.exports = React.createClass({
                 _this.setState({
                     userId: userId,
                     config: chartService.getConfig(timestamps),
-                    intervals: chartService.getSleepIntervals(timestamps)
+                    intervals: chartService.getSleepIntervals(timestamps),
+                    count: timestamps.length
                 });
             })
             .done();
@@ -47,8 +48,11 @@ module.exports = React.createClass({
 
         return (
             <div>
-                <Highcharts config={this.state.config}></Highcharts>
-
+                <div style={{width: '100%', overflow: 'scroll'}}>
+                    <div style={{width: (this.state.count * 4) + 'px'}}>
+                        <Highcharts config={this.state.config} width="20000"></Highcharts>
+                    </div>
+                </div>
                 <table className="interval-overview">
                     <thead>
                         <tr>

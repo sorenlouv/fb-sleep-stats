@@ -41,3 +41,8 @@ Start server
 ```
 npm start
 ```
+
+See the result in the browser
+```
+http://localhost:9090
+```
