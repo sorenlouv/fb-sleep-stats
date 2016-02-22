@@ -9,6 +9,35 @@ Highcharts.Highcharts.setOptions({
     }
 });
 
+function getSleepHabits(intervals) {
+    var intervalNodes = intervals.map(function (interval, i) {
+        return (
+            <tr key={i}>
+                <td>{moment(interval.key).format('dddd, MMM DD')}</td>
+                <td>{moment(interval.from).format('HH:mm')}-{moment(interval.to).format('HH:mm')}</td>
+                <td>{interval.duration} hours</td>
+            </tr>
+        );
+    });
+
+    if (intervalNodes.length > 0) {
+        return (
+            <table className="interval-overview">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td>Period</td>
+                        <td>Duration</td>
+                    </tr>
+                </thead>
+                <tbody>{intervalNodes}</tbody>
+            </table>
+        );
+    } else {
+        return <p>Not enough data to show sleep patterns.</p>
+    }
+}
+
 module.exports = React.createClass({
     getUser(userId) {
         var _this = this;
@@ -36,15 +65,8 @@ module.exports = React.createClass({
         this.getUser(this.props.params.userId);
     },
     render() {
-        var intervalNodes = this.state.intervals.map(function (interval, i) {
-            return (
-                <tr key={i}>
-                    <td>{moment(interval.key).format('dddd, MMM DD')}</td>
-                    <td>{moment(interval.from).format('HH:mm')}-{moment(interval.to).format('HH:mm')}</td>
-                    <td>{interval.duration} hours</td>
-                </tr>
-            );
-        });
+
+        var sleepHabitsNode = getSleepHabits(this.state.intervals);
 
         return (
             <div>
@@ -53,16 +75,7 @@ module.exports = React.createClass({
                         <Highcharts config={this.state.config} width="20000"></Highcharts>
                     </div>
                 </div>
-                <table className="interval-overview">
-                    <thead>
-                        <tr>
-                            <td></td>
-                            <td>Period</td>
-                            <td>Duration</td>
-                        </tr>
-                    </thead>
-                    <tbody>{intervalNodes}</tbody>
-                </table>
+                {sleepHabitsNode}
             </div>
         );
     }
