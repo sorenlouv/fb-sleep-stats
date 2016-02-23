@@ -11,7 +11,7 @@ Read the blog post: https://medium.com/@sqrendk/how-you-can-use-facebook-to-trac
 
 **Clone repository**
 ```
-git clone git@github.com:sqren/fb-sleep-stats.git
+git clone https://github.com/sqren/fb-sleep-stats.git
 ```
 
 **Configuration**
