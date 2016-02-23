@@ -1,7 +1,6 @@
 # fb-sleep
 
-A small tool to show the potential privacy implications modern social media have.
-By tracking online/offline status of people on Facebook, it is possible to get an accurate image of their daily routine, and when they go to sleep, and get up in the morning.
+A small tool to show the potential privacy implications modern social media have. By tracking online/offline status of people on Facebook, it is possible to get an accurate image of their sleep pattern. This is a proof-of-concept. Please read the disclaimer.
 Read the blog post: https://medium.com/@sqrendk/how-you-can-use-facebook-to-track-your-friends-sleeping-habits-505ace7fffb6
 
 ## Installation
@@ -80,3 +79,7 @@ npm run build-minified
 **Other issues**
 
 If you encounter a bug or have a problem, please go to [Issues](https://github.com/sqren/fb-sleep-stats/issues?utf8=%E2%9C%93&q=is%3Aissue+) and use the search functionality, in case someone else already asked the question. If you can't find anything helpful you are very welcome to create a [new issue](https://github.com/sqren/fb-sleep-stats/issues/new)
+
+
+# Disclaimer
+Facebook reached out to me and informed me, that it is against their terms to access their website by automated means. Additionally I am not allowed to urge anyone to do so. Therefore: I urge you to use this project for educational purpose only, and not use it to access Facebook.
