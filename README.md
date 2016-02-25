@@ -1,6 +1,7 @@
-# fb-sleep
+# fb-sleep-stats: Using Facebook to track your friends' sleep
 
 A small tool to show the potential privacy implications modern social media have. By tracking online/offline status of people on Facebook, it is possible to get an accurate image of their sleep pattern. This is a proof-of-concept. Please read the disclaimer.
+
 Read the blog post: https://medium.com/@sqrendk/how-you-can-use-facebook-to-track-your-friends-sleeping-habits-505ace7fffb6
 
 ## Installation
@@ -30,7 +31,7 @@ Update the following values in `config/development.json`
  -  "xs": [xs value from Facebook cookie](https://gist.github.com/sqren/0e4563f258c9e85e4ae1)
  - "appId": [Facebook App Id](https://gist.github.com/sqren/1ac0f5d316fcbd46d8c1)
 
-*Make sure there are not trailing tabs or spaces in the config file!*
+*Make sure there are no trailing tabs or spaces in the config file!*
 
 **Install dependencies**
 ```
