@@ -80,6 +80,15 @@ npm run webpack
 **Changes to development.json are not picked up**
  - You have to run `npm run webpack`
 
+**How do I update to the latest version?**
+After pulling the latest version, you must rebuild the dependencies:
+```
+git pull
+rm -rf node_modules
+npm install
+npm run webpack
+```
+
 **Other issues**
 
 If you encounter a bug or have a problem, please go to [Issues](https://github.com/sqren/fb-sleep-stats/issues?utf8=%E2%9C%93&q=is%3Aissue+) and use the search functionality, in case someone else already asked the question. If you can't find anything helpful you are very welcome to create a [new issue](https://github.com/sqren/fb-sleep-stats/issues/new)
