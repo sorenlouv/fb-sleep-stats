@@ -8,7 +8,7 @@ userController.listUsers = function(req, res) {
             res.json(response);
         })
         .catch(function(err) {
-            console.error('Could not get list', JSON.stringify(err));
+            console.error('Could not get list', err);
             var isNotAuthenticated = err.type === 'OAuthException';
             if (isNotAuthenticated) {
                 res.sendStatus(401);

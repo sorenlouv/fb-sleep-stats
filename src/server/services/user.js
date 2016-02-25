@@ -22,7 +22,7 @@ userService.getList = function(accessToken) {
                     user.count = users[user.id].length;
                     return user;
                 })
-                .sortByOrder('count', 'desc');
+                .orderBy('count', 'desc');
         });
 };
 

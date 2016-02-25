@@ -89,7 +89,7 @@ chartService.getSleepIntervals = function(timestamps) {
         })
 
         // Order intervals by sleep score
-        .sortByOrder('score', 'asc')
+        .orderBy('score', 'asc')
 
         // Reduce intervals to a single per day (Only keep interval with best score)
         .reduce(function(memo, interval, i) {
