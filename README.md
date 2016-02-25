@@ -81,6 +81,7 @@ npm run webpack
  - You have to run `npm run webpack`
 
 **How do I update to the latest version?**
+
 After pulling the latest version, you must rebuild the dependencies:
 ```
 git pull
