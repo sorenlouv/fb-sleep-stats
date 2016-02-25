@@ -77,6 +77,9 @@ npm run webpack
  - If you have an ad-blocker, you must disable it for the site.
  - You need to run `npm run scrape` and keep it running. When you stop it, it will stop tracking.
 
+**Changes to development.json are not picked up**
+ - You have to run `npm run webpack`
+
 **Other issues**
 
 If you encounter a bug or have a problem, please go to [Issues](https://github.com/sqren/fb-sleep-stats/issues?utf8=%E2%9C%93&q=is%3Aissue+) and use the search functionality, in case someone else already asked the question. If you can't find anything helpful you are very welcome to create a [new issue](https://github.com/sqren/fb-sleep-stats/issues/new)
