@@ -3,6 +3,7 @@
         "c_user": "",
         "xs": ""
     },
+    "pollingInterval": 600,
     "appId": 435522656639081,
     "server": {
         "port": 3000
