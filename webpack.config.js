@@ -1,7 +1,6 @@
 var webpack = require('webpack');
 var path = require('path');
-var config = require('./config/development.json');
-
+var config = require('config');
 
 module.exports = {
     entry: path.resolve(__dirname, 'src', 'browser', 'main.js'),
