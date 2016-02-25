@@ -21,7 +21,7 @@ Open the source code folder:
 cd fb-sleep-stats
 ```
 
-Make a copy of the default config file:
+Copy the default config file:
 ```
 cp config/default.json config/development.json
 ```
@@ -38,7 +38,7 @@ Update the following values in `config/development.json`
 npm install
 ```
 
-**Build assets**
+**Build browser dependencies**
 ```
 npm run webpack
 ```
