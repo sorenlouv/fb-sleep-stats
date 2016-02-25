@@ -39,7 +39,7 @@ npm install
 
 **Build assets**
 ```
-npm run build-minified
+npm run webpack
 ```
 
 ## Starting
@@ -63,13 +63,13 @@ http://localhost:3000
 
 #Troubleshooting
 
-**I get an error when running "npm run build-minified"**
+**I get an error when running "npm run webpack"**
 
 Try re-installing the node-modules:
 ```
 rm -rf node_modules
 npm install
-npm run build-minified
+npm run webpack
 ```
 
 **No users show up**
