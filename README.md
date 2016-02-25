@@ -7,7 +7,7 @@ Read the blog post: https://medium.com/@sqrendk/how-you-can-use-facebook-to-trac
 ## Installation
 
 **Requirements**
- - Node.js (preferably Node 4)
+ - Node.js
 
 **Clone repository**
 ```
