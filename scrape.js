@@ -4,28 +4,59 @@ var fbCookie = config.get('fbCookie');
 var fbSleep = require('fb-sleep');
 var userService = require('./src/server/services/user');
 var TEN_MINUTES = 1000 * 60 * 10;
+var pollingInterval = (config.pollingInterval * 1000) || TEN_MINUTES;
 
 function getRandomDelay() {
-    var delay = _.random(TEN_MINUTES * 0.9, TEN_MINUTES);
-    return delay;
+    return _.random(pollingInterval * 0.9, pollingInterval);
 }
 
-function getAndSaveUsers(config, since) {
-    fbSleep.getRecentlyActiveUsers(config, since)
+function getFormattedUsers(users) {
+    return _(users)
+        .toPairs()
+        .map(function(user) {
+            return {
+                userId: user[0],
+                timestamp: user[1] * 1000
+            };
+        })
+        .value();
+}
+
+function getRecentlyActiveUsers(users, since) {
+    users = getFormattedUsers(users);
+    var timestampDiff = getTimestampDiff(users);
+
+    return users.filter(function(user) {
+        return user.timestamp >= (since - timestampDiff);
+    });
+}
+
+function getTimestampDiff(users) {
+    var mostRecentTimestamp = _(users)
+        .orderBy('timestamp')
+        .map('timestamp')
+        .last();
+
+    return Date.now() - mostRecentTimestamp;
+}
+
+function getAndSaveActiveUsers(config, since) {
+    fbSleep.getUsers(config)
         .then(function(users) {
-            console.log(new Date().toLocaleString(), ' - ', users.length, 'active users');
-            return userService.saveUsers(users);
+            var activeUsers = getRecentlyActiveUsers(users, since);
+
+            console.log(new Date().toLocaleString(), ' - Active users: ', activeUsers.length, '/', _.size(users));
+            return userService.saveUsers(activeUsers);
         })
         .catch(function(err) {
-            console.error('A error occured while scraping. Please check to make sure your development.json config is correct');
-            console.error(new Date().toLocaleString(),
-                ' - Could not get users:', err.message, err.statusCode);
+            console.error(new Date().toLocaleString(), 'An error occured while scraping. Please check to make sure your development.json config is correct', err);
         })
         .then(function() {
             var since = Date.now();
-            setTimeout(getAndSaveUsers, getRandomDelay(), config, since);
+            setTimeout(getAndSaveActiveUsers, getRandomDelay(), config, since);
         })
         .done();
 }
 
-getAndSaveUsers(fbCookie, Date.now() - TEN_MINUTES);
+console.log('Polling every', pollingInterval/1000, 'seconds');
+getAndSaveActiveUsers(fbCookie, Date.now() - pollingInterval);
