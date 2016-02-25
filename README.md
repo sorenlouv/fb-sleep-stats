@@ -1,6 +1,6 @@
 # fb-sleep-stats: Using Facebook to track your friends' sleep
 
-A small tool to show the potential privacy implications modern social media have. By tracking online/offline status of people on Facebook, it is possible to get an accurate image of their sleep pattern. This is a proof-of-concept. Please read the disclaimer.
+A small tool to show the potential privacy implications modern social media have. By tracking online/offline status of people on Facebook, it is possible to get an accurate image of their sleep pattern.
 
 Read the blog post: https://medium.com/@sqrendk/how-you-can-use-facebook-to-track-your-friends-sleeping-habits-505ace7fffb6
 
