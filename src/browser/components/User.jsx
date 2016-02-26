@@ -25,7 +25,7 @@ function getSleepHabits(intervals) {
             <table className="interval-overview">
                 <thead>
                     <tr>
-                        <td></td>
+                        <td>Night after</td>
                         <td>Period</td>
                         <td>Duration</td>
                     </tr>
