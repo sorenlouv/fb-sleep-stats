@@ -1,7 +1,7 @@
-var Q = require('q');
+var Bluebird = require('bluebird');
 var facebookService = {};
 
-var fbPromise = Q.Promise(function(resolve) {
+var fbPromise = new Bluebird(function(resolve) {
     window.fbAsyncInit = function() {
         console.log('Facebook App Id:', __FBAPPID__)
         window.FB.init({

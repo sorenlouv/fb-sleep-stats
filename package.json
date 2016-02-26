@@ -20,6 +20,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bluebird": "3.3.3",
     "config": "1.19.0",
     "cookie-parser": "1.4.1",
     "express": "4.13.4",
@@ -27,7 +28,6 @@
     "lodash": "4.5.1",
     "lowdb": "0.11.2",
     "moment": "2.11.2",
-    "q": "1.4.1",
     "react": "0.14.7",
     "react-dom": "0.14.7",
     "react-highcharts": "7.0.0",
