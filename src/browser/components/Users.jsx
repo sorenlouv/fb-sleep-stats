@@ -14,6 +14,9 @@ module.exports = React.createClass({
         var _this = this;
         userService.getList().then(function (users) {
             _this.setState({ users: users });
+        })
+        .catch(function(e) {
+           console.error('Could not load list of users', e);
         });
     },
     handleInputChange: function(event) {
