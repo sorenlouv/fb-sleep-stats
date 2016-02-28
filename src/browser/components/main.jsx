@@ -25,8 +25,8 @@ var App = React.createClass({
     },
     componentDidMount: function () {
         var _this = this;
-        facebookService.onAuthChange(function (isAuthenticated) {
-           _this.setState({isAuthenticated: isAuthenticated});
+        facebookService.onAuthCookie(function () {
+            _this.setState({isAuthenticated: true});
         });
     },
     render() {

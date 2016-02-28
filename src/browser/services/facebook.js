@@ -1,9 +1,21 @@
+var EventEmitter = require('events');
 var Bluebird = require('bluebird');
 var facebookService = {};
+var events = new EventEmitter();
+
+function setFBCookie(expiresIn, accessToken) {
+    var expires = new Date(Date.now() + expiresIn * 1000).toUTCString();
+    var cookie = [];
+    cookie.push('fbAccessToken=' + accessToken);
+    cookie.push('expires=' + expires);
+    cookie.push('path=/');
+    document.cookie = cookie.join(';');
+    events.emit('cookie:updated');
+}
 
 var fbPromise = new Bluebird(function(resolve) {
     window.fbAsyncInit = function() {
-        console.log('Facebook App Id:', __FBAPPID__)
+        console.log('Facebook App Id:', __FBAPPID__);
         window.FB.init({
             appId: __FBAPPID__,
             xfbml: true,
@@ -16,12 +28,7 @@ var fbPromise = new Bluebird(function(resolve) {
         window.FB.Event.subscribe('auth.statusChange', function(response) {
             var isAuthenticated = response.status === 'connected';
             if (isAuthenticated) {
-                var expires = new Date(Date.now() + response.authResponse.expiresIn * 1000).toUTCString();
-                var cookie = [];
-                cookie.push('fbAccessToken=' + response.authResponse.accessToken);
-                cookie.push('expires=' + expires);
-                cookie.push('path=/');
-                document.cookie = cookie.join(';');
+                setFBCookie(response.authResponse.expiresIn, response.authResponse.accessToken);
             }
         });
 
@@ -29,13 +36,8 @@ var fbPromise = new Bluebird(function(resolve) {
     };
 });
 
-facebookService.onAuthChange = function(cb) {
-    return fbPromise.then(function(FB) {
-        FB.Event.subscribe('auth.statusChange', function(response) {
-            var isAuthenticated = response.status === 'connected';
-            cb(isAuthenticated);
-        });
-    });
+facebookService.onAuthCookie = function(cb) {
+    events.addListener('cookie:updated', cb);
 };
 
 facebookService.login = function() {
