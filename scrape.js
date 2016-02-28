@@ -12,11 +12,10 @@ function getRandomDelay() {
 
 function getFormattedUsers(users) {
     return _(users)
-        .toPairs()
-        .map(function(user) {
+        .map(function(timestamp, userId) {
             return {
-                userId: user[0],
-                timestamp: user[1] * 1000
+                userId: userId,
+                timestamp: timestamp * 1000
             };
         })
         .value();
