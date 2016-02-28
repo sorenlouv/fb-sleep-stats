@@ -16,6 +16,7 @@ facebookService.getUsers = _.memoize(function(accessToken, userIds) {
             gzip: true
         })
         .catch(function(res) {
+            facebookService.getUsers.cache.delete(accessToken);
             if (_.has(res, 'response.body.error')) {
                 throw res.response.body.error;
             }
