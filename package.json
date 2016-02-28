@@ -9,8 +9,9 @@
     "forever-scrape": "forever -a start -l scrape.log scrape.js",
     "forever-server": "forever -a start -l server.log index.js",
     "debug": "node-debug --no-preload ./index.js",
+    "webpack": "webpack --progress",
+    "webpack-min": "webpack --progress --optimize-minimize",
     "webpack-watch": "webpack --watch --progress",
-    "webpack": "webpack --progress --optimize-minimize",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
