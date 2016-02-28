@@ -70,9 +70,9 @@ module.exports = React.createClass({
 
         return (
             <div>
-                <div style={{width: '100%', overflow: 'scroll'}}>
+                <div className="chart-container">
                     <div style={{minWidth: (this.state.count * 4) + 'px'}}>
-                        <Highcharts config={this.state.config} width="20000"></Highcharts>
+                        <Highcharts config={this.state.config}></Highcharts>
                     </div>
                 </div>
                 {sleepHabitsNode}

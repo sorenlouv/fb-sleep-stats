@@ -8,8 +8,10 @@ html, body {
     float: left;
     width: 299px;
     height: 100vh;
-    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x: hidden;
     border-right: 1px solid #aaa;
+    position: fixed;
 
     .search {
         width: calc(~"100% - 10px");
@@ -54,6 +56,12 @@ html, body {
 .content {
     width: calc(~"100% - 300px");
     float: right;
+
+    .chart-container {
+        width: 100%;
+        overflow-x: scroll;
+        overflow-y: hidden;
+    }
 
     .interval-overview {
         thead {
