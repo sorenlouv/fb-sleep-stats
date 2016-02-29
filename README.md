@@ -9,8 +9,9 @@ Read the blog post: https://medium.com/@sqrendk/how-you-can-use-facebook-to-trac
 
 ## Installation
 
-**Requirements**
- - Node.js
+**Prerequisites**
+ - Git ([how to install](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git))
+ - Node.js ([how to install](https://docs.npmjs.com/getting-started/installing-node))
 
 **Clone repository**
 ```
