@@ -4,7 +4,7 @@ A small tool to show the potential privacy implications modern social media have
 
 Read the blog post: https://medium.com/@sqrendk/how-you-can-use-facebook-to-track-your-friends-sleeping-habits-505ace7fffb6
 
-![screen shot 2016-02-28 at 2 54 59 am](https://cloud.githubusercontent.com/assets/209966/13376869/b943b080-ddc6-11e5-826c-0ade7f1acdeb.png)
+![Facebook Sleep Screenshot](https://cloud.githubusercontent.com/assets/209966/13382859/b7b31aa4-de7e-11e5-8fca-35d68fe2f02f.png)
 
 
 ## Installation
