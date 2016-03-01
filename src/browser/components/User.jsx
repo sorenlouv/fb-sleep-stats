@@ -1,4 +1,6 @@
 var React = require('react');
+require('highcharts-exporting');
+require('highcharts-offline-exporting');
 var Highcharts = require('react-highcharts/bundle/highcharts');
 var userService = require('../services/user');
 var chartService = require('../services/chart');
