@@ -49,6 +49,8 @@ npm run webpack
 
 ## Starting
 
+You need to have two processes running simultaniously: the scraper and the webserver. Therefore, you must run the following two commands in separate windows/tabs.
+
 **Start scraping**
 
 *This will run continously, polling Facebook every 10 minutes. Keep it running for as long as you want to track sleep.*
@@ -61,10 +63,7 @@ npm run scrape
 npm start
 ```
 
-See the result in the browser
-```
-http://localhost:3000
-```
+See the result in the browser: [http://localhost:3000](http://localhost:3000)
 
 #Troubleshooting
 
