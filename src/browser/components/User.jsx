@@ -1,5 +1,7 @@
 var React = require('react');
 var Highcharts = require('react-highcharts/bundle/highcharts');
+require('highcharts-exporting')(Highcharts.Highcharts);
+require('highcharts-offline-exporting')(Highcharts.Highcharts);
 var userService = require('../services/user');
 var chartService = require('../services/chart');
 var moment = require('moment');

@@ -139,6 +139,9 @@ chartService.getConfig = function(timestamps) {
     });
 
     return {
+        exporting: {
+            sourceWidth: 1200
+        },
         plotOptions: {
             series: {
                 animation: false,
