@@ -1,11 +1,12 @@
 var React = require('react');
-var Highcharts = require('react-highcharts/bundle/highcharts');
-require('highcharts-exporting')(Highcharts.Highcharts);
-require('highcharts-offline-exporting')(Highcharts.Highcharts);
+var Highcharts = require('highcharts');
+var ReactHighcharts = require('react-highcharts');
+require('highcharts-exporting')(ReactHighcharts.Highcharts);
+require('highcharts-offline-exporting')(ReactHighcharts.Highcharts);
 var userService = require('../services/user');
 var chartService = require('../services/chart');
 var moment = require('moment');
-Highcharts.Highcharts.setOptions({
+ReactHighcharts.Highcharts.setOptions({
     global: {
         useUTC: false
     }
@@ -74,7 +75,7 @@ module.exports = React.createClass({
             <div>
                 <div className="chart-container">
                     <div style={{minWidth: (this.state.count * 4) + 'px'}}>
-                        <Highcharts config={this.state.config}></Highcharts>
+                        <ReactHighcharts config={this.state.config}></ReactHighcharts>
                     </div>
                 </div>
                 {sleepHabitsNode}
