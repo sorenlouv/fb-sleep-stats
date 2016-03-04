@@ -95,7 +95,7 @@ npm run webpack
 
 **ReferenceError: Promise is not defined**
 
-You meed to update to the latest stable version of whatever major version you are on (v5.7.1, v4.3.2 or v0.12.11). After that rebuild dependencies:
+Update Node.js to the latest stable version of the branch you are on (v5.7.1, v4.3.2 or v0.12.11). After that rebuild dependencies:
 ```
 rm -rf node_modules
 npm install
