@@ -93,6 +93,10 @@ npm install
 npm run webpack
 ```
 
+**Where is the data stored?**
+
+You can find the data in JSON-format here: `src/server/services/db.json`.
+
 **Other issues**
 
 If you encounter a bug or have a problem, please go to [Issues](https://github.com/sqren/fb-sleep-stats/issues?utf8=%E2%9C%93&q=is%3Aissue+) and use the search functionality, in case someone else already asked the question. If you can't find anything helpful you are very welcome to create a [new issue](https://github.com/sqren/fb-sleep-stats/issues/new)
