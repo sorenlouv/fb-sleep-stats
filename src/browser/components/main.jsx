@@ -51,4 +51,4 @@ ReactDOM.render((
         <Route path="/user/:userId" component={User}/>
       </Route>
     </Router>
-), document.getElementById('sleep-stats-app'))
+), document.getElementById('sleep-stats-app'));
