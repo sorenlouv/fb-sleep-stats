@@ -56,7 +56,10 @@ dao.saveUsers = function(users) {
         if (!db.object.users[user.userId]) {
             db.object.users[user.userId] = [];
         }
-        db.object.users[user.userId].push(user.timestamp);
+        
+        if(user.timestamp) {
+            db.object.users[user.userId].push(user.timestamp);
+        }
     });
     db.write();
 };
