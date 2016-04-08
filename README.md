@@ -102,6 +102,9 @@ npm install
 npm run webpack
 ```
 
+**Cannot parse config file**
+Your config file contains invalid json. Find the errors by using a tool like [http://jsonlint.com/](http://jsonlint.com/)
+
 **Where is the data stored?**
 
 You can find the data in JSON-format here: `src/server/services/db.json`.
