@@ -32,7 +32,16 @@ cp config/default.json config/development.json
 
 Update the following values in `config/development.json`
  - "c_user": [your numeric Facebook user id](http://findmyfbid.com/)
- -  "xs": [xs value from Facebook cookie](https://gist.github.com/sqren/0e4563f258c9e85e4ae1)
+ -  "xs": [xs value from Facebook cookie] 
+ ```
+    1.  Open www.messenger.com
+    2. Open Developer Tools
+    3. Click "Application" tab
+    4. Click, "Cookies" in the left panel
+    5. Click "www.messenger.com"
+    6. Copy the value of "xs"
+    ```
+
  - "appId": [Facebook App Id](https://gist.github.com/sqren/1ac0f5d316fcbd46d8c1)
 
 *Make sure there are no trailing tabs or spaces in the config file!*
