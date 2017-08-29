@@ -11,6 +11,7 @@ show_help() {
 	echo
 	echo "-d, --daemon 	No output, runs in background"
 	echo "-r, --reinstall 	Reinstalls and Rebuilds packages"
+	echo "-a, --all 	Reinstalls & Runs"
 	echo "-h, --help 	prints this help dialog"
 	echo
 	echo "[!] Facebook - Dev settings [App ID]: https://developers.facebook.com/apps"
@@ -60,6 +61,7 @@ daemon_mode() {
 
 daemon_flag=0
 reinstall_flag=0
+all_flag=0
 for i in "$@"
 do
 	case $i in
@@ -72,6 +74,9 @@ do
 			;;
 		-r|--reinstall)
 			reinstall_flag=1
+			;;
+		-a|--all)
+			all_flag=1
 			;;
 	esac
 done
@@ -86,8 +91,13 @@ if [ $reinstall_flag -eq 1 ]; then
 	reinstall
 fi
 
+if [[ $all -eq 1 ]]; then
+	reinstall
+	clear
+	main
+fi
 
-if [ $daemon_flag -eq 0 ]; then
+if [ $daemon_flag -eq 0 ] && [ $all_flag -eq 0 ]; then
 	read -r -p "Start the Script? [Y/n] " response
 	response=${response,,}  # ,, makes lowercase
 	if [[ $response =~ ^(yes|y) ]]; then
